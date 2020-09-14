@@ -13,7 +13,7 @@ metadata:
 parameters:
   - name: NAME
     required: true
-    value: bookbag
+    value: bookbag-demo
   - name: BUILDER_IMAGE
     required: true
     value: quay.io/openshifthomeroom/workshop-dashboard:5.0.0
@@ -41,7 +41,7 @@ objects:
           uri: ${GIT_REPO}
         type: Git
       strategy:
-        sourceStrategy:
+        dockerStrategy:
           from:
             kind: DockerImage
             name: ${BUILDER_IMAGE}

@@ -1,0 +1,25 @@
+---
+modules:
+  overview:
+    name: Overview
+    exit_sign: Getting Started
+  getting-started:
+    name: Getting Started
+    exit_sign: Workshop Content
+  workshop-content:
+    name: Workshop Content
+    exit_sign: Workshop Variables
+  workshop-vars:
+    name: Workshop Variables
+    exit_sign: OpenShift Console
+  openshift-console:
+    name: OpenShift Console
+    exit_sign: Terminal Configuration
+  terminal-configuration:
+    name: Terminal Configuration
+    exit_sign: Slide Content
+  slide-content:
+    name: Slide Content
+    exit_sign: AgnosticD Integration
+  agnosticd-integration:
+    name: AgnosticD Integration

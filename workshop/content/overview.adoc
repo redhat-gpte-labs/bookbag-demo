@@ -1,0 +1,15 @@
+:markup-in-source: verbatim,attributes,quotes
+
+== Overview
+
+This workshop is a demo of Bookbag features and will teach you how to get started with Bookbag for your own lab development.
+
+The source for this demo can be found at https://github.com/redhat-gpte-labs/bookbag-demo.
+
+A template for starting your own bookbag repository can be found at https://github.com/redhat-gpte-labs/bookbag-template.
+
+== What is Bookbag?
+
+Bookbag is a deployment pattern for https://github.com/openshift-homeroom[OpenShift Homeroom] that is supported by Red Hat's GPTE team for demos and lab development.
+While designed specifically for OpenShift, it can be used for labs and demos of any sort.
+Only the OpenShift Homeroom deployment itself needs to be hosted on OpenShift or another container platform.

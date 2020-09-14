@@ -1,0 +1,12 @@
+---
+name: Getting Started with the Babylon Events UI
+modules:
+  activate:
+    - overview
+    - getting-started
+    - workshop-content
+    - workshop-vars
+    - openshift-console
+    - terminal-configuration
+    - slide-content
+    - agnosticd-integration

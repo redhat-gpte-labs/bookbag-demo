@@ -9,15 +9,19 @@ The lab content can be found at the links below.
 
 xref:workshop/content/overview.adoc[Overview]
 
-xref:workshop/content/lab-content.adoc[Content Management]
+xref:workshop/content/getting-started.adoc[Getting Started]
 
-xref:workshop/content/lab-vars.adoc[Variable Management]
+xref:workshop/content/workshop-content.adoc[Workshop Content]
 
-xref:workshop/content/ui-customization.adoc[UI Customization]
+xref:workshop/content/workshop-vars.adoc[Workshop Variables]
 
 xref:workshop/content/openshift-console.adoc[OpenShift Console and Access]
 
-xref:workshop/content/agnosticd.adoc[AgnosticD Integration]
+xref:workshop/content/terminal-configuration.adoc[Terminal Configuration]
+
+xref:workshop/content/slide-content.adoc[Slides]
+
+xref:workshop/content/agnosticd-integration.adoc[AgnosticD Integration]
 
 == Development
 

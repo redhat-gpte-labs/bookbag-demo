@@ -17,7 +17,7 @@ oc process -f build-template.yaml | oc apply -f -
 Make edits as desired to local source, then build:
 
 ```
-oc start-build bookbag --wait --follow --from-dir=.
+oc start-build bookbag-demo --wait --follow --from-dir=.
 ```
 
 Process and apply deploy template, setting `CONSOLE_IMAGE` to match the expected OpenShift version:

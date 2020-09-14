@@ -1,0 +1,47 @@
+:markup-in-source: verbatim,attributes,quotes
+
+== Getting Started
+
+=== OpenShift Access
+
+You should have access to an OpenShift cluster in order to get started with Bookbag development.
+While it is possible to develop bookbag without OpenShift, we recommend building and working inside of OpenShift so that you can see the full feature set of OpenShift Homeroom and so that you will understand how Bookbag is deployed in production.
+Any recent version of OpenShift is suitable.
+
+This demo was developed using a local development environment with https://developers.redhat.com/products/codeready-containers/overview[Red Hat CodeReady Containers].
+
+If you have access to https://labs.opentlc.com/[labs.opentlc.com], you may use the "OPENTLC OpenShift 4 Labs > OPENTLC OpenShift 4.4 Shared Access" catalog item to request access to a shared cluster.
+
+In addition to OpenShift cluster access, you will need a terminal and the `oc` command to follow along with this demo.
+
+=== Project Namespace
+
+You will need a project namespace in OpenShift to deploy bookbag.
+We will be using `bookbag-demo`.
+After logging into your OpenShift cluster, switch to whatever project you will be using:
+
+[source,subs="{markup-in-source}"]
+--------------------------------------------------------------------------------
+$ *oc project bookbag-demo*
+Now using project "bookbag-demo" on server "https://api.crc.testing:6443".
+--------------------------------------------------------------------------------
+
+If you do not already have a project namespace, you can create one with `oc new-project`:
+
+[source,subs="{markup-in-source}"]
+--------------------------------------------------------------------------------
+$ *oc new-project bookbag-demo*
+Now using project "bookbag-demo" on server "https://api.crc.testing:6443".
+
+You can add applications to this project with the 'new-app' command. For example, try:
+
+    oc new-app ruby~https://github.com/sclorg/ruby-ex.git
+
+to build a new example application in Ruby. Or use kubectl to deploy a simple Kubernetes application:
+
+    kubectl create deployment hello-node --image=gcr.io/hello-minikube-zero-install/hello-node
+--------------------------------------------------------------------------------
+
+=== Git Repository
+
+https://github.com/redhat-gpte-labs/bookbag-template
