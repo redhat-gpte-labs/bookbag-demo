@@ -1,0 +1,31 @@
+:markup-in-source: verbatim,attributes,quotes
+
+= Bookbag Demo Development
+
+Bookbag development is best suited for work on an OpenShift cluster.
+Any recent version of OpenShift is suitable.
+This demo was developed using a local development environment with https://developers.redhat.com/products/codeready-containers/overview[Red Hat CodeReady Containers].
+
+== Build
+
+Process and apply the OpenShift build template:
+
+```
+oc process -f build-template.yaml | oc apply -f -
+```
+
+Make edits as desired to local source, then build:
+
+```
+oc start-build bookbag --wait --follow --from-dir=.
+```
+
+Process and apply deploy template, setting `CONSOLE_IMAGE` to match the expected OpenShift version:
+
+```
+oc process -f deploy-template.yaml \
+-p CONSOLE_IMAGE=quay.io/openshift/origin-console:$(oc version -o json | jq '.openshiftVersion' -r | sed 's/\.[0-9]*$//') \
+| oc apply -f -
+```
+
+The deploy template includes a DeploymentConfig with an image change trigger so that it will automatically redeploy on build completion.
