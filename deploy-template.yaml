@@ -35,6 +35,12 @@ parameters:
   - name: CONSOLE_BRANDING
     value: openshift
     required: true
+  - name: ROLE
+    description: >-
+      Role to assign to bookbag service account. Default, 'basic-user'.
+      Ex: admin, edit, view
+    required: true
+    value: edit
 
 objects:
   - apiVersion: apps.openshift.io/v1
@@ -138,6 +144,18 @@ objects:
     metadata:
       labels:
         app: ${NAME}
+      name: ${NAME}
+
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: ${NAME}
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: ${ROLE}
+    subjects:
+    - kind: ServiceAccount
       name: ${NAME}
 
   - apiVersion: v1
