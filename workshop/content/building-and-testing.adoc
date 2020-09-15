@@ -1,0 +1,48 @@
+:markup-in-source: verbatim,attributes,quotes
+
+== Building your Bookbag Image
+
+Create the bookbag BuildConfig and ImageStream:
+
+[source,subs="{markup-in-source}"]
+----
+$ *oc process -f build-template.yaml | oc apply -f -*
+----
+
+Build your image from local source or directly from Git source.
+
+To build from local source:
+
+[source,subs="{markup-in-source}"]
+----
+$ *oc start-build bookbag --follow --from-dir=.*
+----
+
+Build your Bookbag Image from Git (make sure you have set `GIT_REPO` in your build template!):
+
+[source,subs="{markup-in-source}"]
+----
+$ *oc start-build bookbag --follow*
+----
+
+== Test Deploy of the Bookbag image
+
+. Define a variables file, `workshop-vars.js`, to define variables for testing  your lab content as discussed previously.
+
+Process the deploy template with your `workshop-vars.json`:
++
+[source,subs="{markup-in-source}"]
+----
+$ *oc process -f deploy-template.yaml -p WORKSHOP_VARS="$(cat workshop-vars.json)" | oc apply -f -*
+----
+
+Get the Bookbag's Route:
++
+[source,subs="{markup-in-source}"]
+----
+$ *oc get route bookbag*
+NAME     HOST/PORT                                  PATH  SERVICES  PORT       TERMINATION    WILDCARD
+bookbag  bookbag-bookbag-demo.apps.ocp.example.com        bookbag   10080-tcp  edge/Redirect  None
+----
+
+Use the Route hostname to open the Bookbag page in your browser.

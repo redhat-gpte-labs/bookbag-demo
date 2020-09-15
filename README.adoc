@@ -21,6 +21,8 @@ xref:workshop/content/terminal-configuration.adoc[Terminal Configuration]
 
 xref:workshop/content/slide-content.adoc[Slides]
 
+xref:workshop/content/building-and-testing.adoc[Building and Testing]
+
 xref:workshop/content/agnosticd-integration.adoc[AgnosticD Integration]
 
 == Development
