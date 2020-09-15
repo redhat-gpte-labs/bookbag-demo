@@ -8,9 +8,6 @@
 #
 #export TERMINAL_TAB='split'
 
-# Disable OpenShift Console, this is not appropriate for most labs.
-#export CONSOLE_URL='http://0.0.0.0:10083'
-
 # Enable the following line to disable the right-hand pane entirely.
 # Only use this if you have no terminal, no slides, and no console.
 #export DEFAULT_PAGE='workshop'
