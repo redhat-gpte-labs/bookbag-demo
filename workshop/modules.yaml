@@ -2,7 +2,6 @@
 modules:
   overview:
     name: Overview
-    exit_sign: Getting Started
   getting-started:
     name: Getting Started
     exit_sign: Workshop Content

@@ -1,5 +1,5 @@
 ---
-name: Getting Started with the Babylon Events UI
+name: Bookbag Demo
 modules:
   activate:
     - overview

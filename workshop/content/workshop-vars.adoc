@@ -1,0 +1,103 @@
+:markup-in-source: verbatim,attributes,quotes
+:pct: %
+
+== Setting Variables for your Lab
+
+Workshop variables allow you to customize your workshop instructions and examples to tailor to the specifics of the lab environment for your users.
+
+The first step to using variables in your lab content is to be sure that your lab provisioning sets the variables you need.
+
+The `agnosticd_user_info` module is documention is include with AgnosticD:
+
+https://github.com/redhat-cop/agnosticd/blob/development/docs/User_Info.adoc
+
+=== Messages
+
+The `agnosticd_user_info` module can be used to set messages for your lab users.
+The specifics are going to differ from lab to lab, but the general approach is to loop over a list of messages, calling `agnosticd_user_info`:
+
+[source]
+--------------------------------------------------------------------------------
+    - name: Set user info messages
+      agnosticd_user_info:
+        msg: "{{ item }}"
+      loop:
+        - "Your lab environment GUID is {{ guid }}."
+        - ""
+        - "For lab access you can login with the following credentials:"
+        - "  User: {{ lab_username }}"
+        - "  Password: {{ lab_password }}"
+--------------------------------------------------------------------------------
+
+NOTE: You may be tempted to use a YAML block quote here, rather than a loop.
+It would make more sense for Ansible and YAML if you could.
+Unfortunately a limitation in our provisioning infrastructure forces this loop format.
+
+Each call to `agnosticd_user_info` that sets a `msg` appends to previous messages.
+Empty messages can be used to insert blank lines.
+
+Within Bookbag a single variable, `user_info_messages`, will contain all messages as a string concatenated with line breaks.
+
+=== Data Variables
+
+You can call `agnosticd_user_info` with `data` to set variables that can then be used in your bookbag content.
+
+[source]
+--------------------------------------------------------------------------------
+    - name: Set user info messages
+      agnosticd_user_info:
+        data:
+          lab_username: "{{ lab_username }}"
+          lab_password: "{{ lab_password }}"
+--------------------------------------------------------------------------------
+
+NOTE: The `guid` variable will be automatically added to the available bookbag variables.
+Variable names are case sensitive.
+
+=== Users
+
+In calling `agnosticd_user_info` a key distinction is how users relate to lab environments.
+There are three user patterns in AgnosticD:
+
+* Each user gets their own lab environment independent from other users.
+Lab data and messages are delivered to the user who requested the environment.
+
+* A single AgnosticD provisioning operation creates a shared infrastructure that will be used by a pre-defined set of number users.
+Lab data and messages that specify a `user` will be delivered only to that user.
+Messages without a `user` are sent whoever requested the shared environment.
+
+* An initial AgnosticD provisioning operation creates a shared infrastructure and then subsequently a separate catalog item is used to execute AgnosticD to create user environments within that infrastructure.
+This is essentially the same as the use case as users having independent environments.
+User messages should not specify a `user` when a separate AgnosticD run is processed for each user.
+
+If provisioning a shared user environment with pre-provisioned users, you can set user info messages and data per-user.
+This is usually done with a loop such as:
+
+[source]
+--------------------------------------------------------------------------------
+    - name: Set agnosticd_user_info for users
+      agnosticd_user_info:
+        user: student{{ n }}
+        msg: student{{ n }} password is {{ lab_password }}
+        data:
+          lab_password: "{{ lab_password }}"
+      loop: "{{ range(user_count_start|int, user_count_start|int + user_count|int) | list }}"
+      loop_control:
+        loop_var: n
+--------------------------------------------------------------------------------
+
+== Using Variables in your Content
+
+Variables can be used in your content with the variable name surrounded by `%`, ex: `{pct}guid{pct}`.
+This will substitute the variables before AsciiDoc evaluation, so you may need to protect your content from AsciiDoc evalutation.
+
+=== AsciiDoc Macros
+
+If preferred, you may define AsciiDoc macros for your variables and then use the variables with whatever names you assign with macros:
+
+[source,subs="{markup-in-source}"]
+----
+:GUID: {pct}guid{pct}
+
+Your GUID is {GUID}
+----

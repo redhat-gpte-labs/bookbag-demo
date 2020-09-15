@@ -1,8 +1,6 @@
 :markup-in-source: verbatim,attributes,quotes
 
-== Getting Started
-
-=== OpenShift Access
+== OpenShift Access
 
 You should have access to an OpenShift cluster in order to get started with Bookbag development.
 While it is possible to develop bookbag without OpenShift, we recommend building and working inside of OpenShift so that you can see the full feature set of OpenShift Homeroom and so that you will understand how Bookbag is deployed in production.
@@ -14,7 +12,9 @@ If you have access to https://labs.opentlc.com/[labs.opentlc.com], you may use t
 
 In addition to OpenShift cluster access, you will need a terminal and the `oc` command to follow along with this demo.
 
-=== Project Namespace
+If you are accessing this demo content running as bookbag within an OpenShift cluster then you have everything you need right here to get started.
+
+== Project Namespace
 
 You will need a project namespace in OpenShift to deploy bookbag.
 We will be using `bookbag-demo`.
@@ -42,6 +42,23 @@ to build a new example application in Ruby. Or use kubectl to deploy a simple Ku
     kubectl create deployment hello-node --image=gcr.io/hello-minikube-zero-install/hello-node
 --------------------------------------------------------------------------------
 
-=== Git Repository
+== Git Repository
+
+The following GitHub template is provided as a starting point for bookbag development.
 
 https://github.com/redhat-gpte-labs/bookbag-template
+
+To use the template, simply click the image::media/github-use-this-template.png[Use This Template] button, select the owner, and provide a repository name.
+Lab and demo instruction content should be hosted in an organizationally managed repository rather than a personal repository.
+If you are developing a lab for a Red Hat event or for demo purposes and do not have a suitable GitHub organization then please contact GPTE to request a repository in the https://github.com/redhat-gpte-labs[redhat-gpte-labs GitHub org].
+
+Instructions in this demo assume this template repository is your starting point.
+If you have used a previous version of the bookbag-template, the main changes to watch for are:
+
+* Updated `.workshop/build` and `envvars/terminal.sh`
+
+* Build template now defaults to Dockerfile build.
+
+* Deploy template now creates a service account and grants a rolebinding for the service account.
+
+* New deploy template which includes OpenShift console access from bookbag.

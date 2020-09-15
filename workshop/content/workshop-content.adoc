@@ -1,0 +1,72 @@
+:markup-in-source: verbatim,attributes,quotes
+
+== AsciiDoc
+
+Bookbag deployment of OpenShift Homeroom uses https://asciidoc.org/[AsciiDoc] content.
+The AsciiDoc lab contet should be broken up into a number of small documents.
+Each AsciiDoc document should have a `.adoc` file extension and be placed under `workshop/content/`.
+
+The bookbag-template repository provides some starting AsciiDoc content:
+
+[source,subs="{markup-in-source}"]
+--------------------------------------------------------------------------------
+$ *ls workshop/content/*
+exercise1.adoc  exercise2.adoc  exercise3.adoc  overview.adoc  review.adoc
+--------------------------------------------------------------------------------
+
+== Workshop Definition
+
+Once you have your AsciiDoc content, the next step is to define your `workshop/workshop.yaml` to list the AsciiDoc for your active content modules.
+The initial `workshop/workshop.yaml` provided by the bookbag template contains:
+
+[source]
+--------------------------
+---
+name: Bookbag Template
+modules:
+  activate:
+    - overview
+    - exercise1
+    - exercise2
+    - exercise3
+    - review
+--------------------------
+
+Be sure to set the `name` for your workshop.
+This name will appear as a title in the upper left of the Bookbag interface.
+
+The modules should be listed by AsciiDoc filename, without the `.adoc` file extension.
+The order in which the files are listed here is they will be listed for your users.
+
+== Workshop Modules
+
+The `workshop/modules.yaml` is used to map names to each of your workshop modules.
+The names associated to each will be used as title text in the navigation as well as at the top of the module content.
+Each module entry has a key of the filename without the `.adoc` extension, just like as listed in the `workshop/workshop.yaml`.
+
+The bookbag template includes the following to get you started:
+
+[source]
+--------------------------
+---
+modules:
+  overview:
+    name: Overview
+    exit_sign: Continue
+  exercise1:
+    name: Exercise 1
+    exit_sign: Continue
+  exercise2:
+    name: Exercise 2
+    exit_sign: Continue
+  exercise3:
+    name: Exercise 3
+    exit_sign: Continue
+  review:
+    name: Review
+--------------------------
+
+Notice that each module can additionaly have an `exit_sign`, which is text that will appear on a button for the user to continue to the next module in a series.
+If an `exit_sign` is not given, then default text will be applied.
+The order modules are listed in the `modules` dictionary has no effect on the lab.
+For clarity, the order should probably match the `workshop/workshop.yaml`.
