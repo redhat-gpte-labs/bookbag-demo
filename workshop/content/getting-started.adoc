@@ -62,3 +62,17 @@ If you have used a previous version of the bookbag-template, the main changes to
 * Deploy template now creates a service account and grants a rolebinding for the service account.
 
 * New deploy template which includes OpenShift console access from bookbag.
+
+== Setting the Deploy Template
+
+The bookbag-template includes two templates for deploying bookbag.
+
+* `deploy-with-console-template.yaml` - Deploy OpenShift Homeroom with pre-authenticated access to the OpenShift cluster console and edit access to the namespace.
+
+* `deploy-no-console-template.yaml` - Deploy OpenShift Homeroom without OpenShift console and only the most basic user access.
+
+First select whether to use the template with OpenShift cluster access or the template without cluster access.
+There is a symbolic link provided that links `deploy-template.yaml` with `deploy-no-console-template.yaml`.
+Once you decide on a template we recommend that you remove this link and rename the selected deploy template file to `deploy-template.yaml`.
+
+If desired you may edit either deploy template to change the default user access by setting the default `value` of the `ROLE` parameter in the template.

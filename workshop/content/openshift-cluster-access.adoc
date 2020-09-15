@@ -1,0 +1,19 @@
+:markup-in-source: verbatim,attributes,quotes
+
+== OpenShift Cluster Access
+
+Because Bookbag deploys OpenShift Homeroom on an OpenShift cluster, the terminal is automatically operating on the cluster as an OpenShift service account.
+If your workshop uses OpenShift then Bookbag should be deployed on the same cluster as is used for the lab content.
+This saves steps of having the user `oc login` to the cluster or authenticate to the OpenShift Console.
+
+NOTE: Access to the OpenShift console depends on which deploy template you selected.
+The default is no OpenShift console access.
+Access is enabled with `deploy-with-console-template.yaml`.
+
+If your lab is not teaching OpenShift or is teaching a topic such as OpenShift installation, where the cluster will not be available at the start of the lab, then you will need to provide access instructions to the user in your lab content.
+The OpenShift homeroom terminal includes the `ssh` command to access other hosts and the `oc` for accessing other clusters.
+Other commands may be installed into the workshop terminal by customizing the `Dockerfile` provided in the bookbag-template.
+
+NOTE: Bookbag is not a high security configuration!
+Most workshops involve sharing access credentials with a group of people.
+No security sensitive passwords or credentials should be used in the terminal or provided in lab instructions!

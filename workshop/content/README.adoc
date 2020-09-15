@@ -8,7 +8,7 @@ xref:workshop-content.adoc[Workshop Content]
 
 xref:workshop-vars.adoc[Workshop Variables]
 
-xref:openshift-console.adoc[OpenShift Console and Access]
+xref:openshift-cluster-access.adoc[OpenShift Console and Access]
 
 xref:terminal-configuration.adoc[Terminal Configuration]
 

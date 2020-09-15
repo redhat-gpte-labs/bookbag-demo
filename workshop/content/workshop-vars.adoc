@@ -101,3 +101,26 @@ If preferred, you may define AsciiDoc macros for your variables and then use the
 
 Your GUID is {GUID}
 ----
+
+=== Testing Variables
+
+While developing your Bookbag contet you can check how the content will look with injected variable values.
+The bookbag-template provides a reference `workshop-vars.json` such as will be provided by automation.
+You should modify this file to reflect the variables that are expected from when you provision your lab environment.
+
+[source]
+----
+{
+    "guid": "abcde",
+    "example_var": 42,
+    "ssh_command": "ssh lab-user@bastion.abcde.example.com",
+    "ssh_password": "p4ssword!1",
+    "user": "lab-user",
+    "user_info_messages": "Example workshop messages:\nHello, World"
+}
+----
+
+
+NOTE: The variables `guid` and `user_info_messages` will be provided by automation.
+`user` will also be set in the case of a multi-user shared lab environment.
+All other variables in `workshop-vars.json` depend upon your AgnosticD config and workloads.

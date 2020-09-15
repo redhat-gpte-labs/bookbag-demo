@@ -2,4 +2,42 @@
 
 == Multiple Terminals
 
+The default deployment for OpenShift homeroom includes a single terminal on the right.
+
+You can edit `envvars/gateway.sh` to change this behavior.
+
+For two terminals, set:
+
+----
+export TERMINAL_TAB='split' 
+----
+
+For three:
+
+----
+export TERMINAL_TAB='split/2' 
+----
+
+If your lab instructions will not use the terminal, set:
+
+----
+ENABLE_TERMINAL='false'
+----
+
+If your workshop is only using bookbag to host lab instructions, set the `DEFAULT_PAGE`:
+
+----
+export DEFAULT_PAGE='workshop'
+----
+
 == Adding Commands
+
+Commands may be added to the bookbag terminal by adding installation of those commands to the `Dockerfile`.
+
+--------------------------------------------------------------------------------
+# Install the vim editor, helm, and ansible
+RUN yum install -y vim-enhanced \
+ && curl -s https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
+  | tar zxf - -C /usr/local/bin --strip-components=1 linux-amd64/helm  \
+ && pip3 install ansible
+--------------------------------------------------------------------------------

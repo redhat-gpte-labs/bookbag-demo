@@ -15,7 +15,7 @@ xref:workshop/content/workshop-content.adoc[Workshop Content]
 
 xref:workshop/content/workshop-vars.adoc[Workshop Variables]
 
-xref:workshop/content/openshift-console.adoc[OpenShift Console and Access]
+xref:workshop/content/openshift-cluster-access.adoc[OpenShift Console and Access]
 
 xref:workshop/content/terminal-configuration.adoc[Terminal Configuration]
 
