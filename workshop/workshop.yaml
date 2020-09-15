@@ -6,7 +6,8 @@ modules:
     - getting-started
     - workshop-content
     - workshop-vars
-    - openshift-console
+    - openshift-cluster-access
+    - authentication
     - terminal-configuration
     - slide-content
     - agnosticd-integration

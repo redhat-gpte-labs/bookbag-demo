@@ -10,6 +10,8 @@ xref:workshop-vars.adoc[Workshop Variables]
 
 xref:openshift-cluster-access.adoc[OpenShift Console and Access]
 
+xref:authentication.adoc[Authentication]
+
 xref:terminal-configuration.adoc[Terminal Configuration]
 
 xref:slide-content.adoc[Slides]
