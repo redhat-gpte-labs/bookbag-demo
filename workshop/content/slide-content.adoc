@@ -1,0 +1,4 @@
+== Reveal.js
+
+To use slides, simply create slides in https://revealjs.com[reveal.js].
+Place reveal.js HTML, with `index.html` in `workshop/slides/`.
