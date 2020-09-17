@@ -1,5 +1,23 @@
 :markup-in-source: verbatim,attributes,quotes
 
-== Deploying Bookbag with AgnosticD
+When your workshop is deployed with AgnosticD it is the responsibility of the lab developer to also deploy Bookbag or OpenShift Homeroom with AgnosticD.
+There are three deployment patterns:
 
-TBD
+* OpenShift cluster that is shared by multiple students
+
+* OpenShift cluster per student
+
+* Workshop without OpenShift Cluster and OpenShift Install Workshop
+
+=== Shared OpenShift Cluster
+
+Use `ocp4_workload_bookbag_setup` to build the bookbag image during cluster deployment and `ocp4_workload_bookbag_user` to deploy bookbag for each user.
+
+=== Per-Student OpenShift Cluster
+
+Use `bookbag` AgnosticD role, executing on the OpenShift cluster's bastion host during post-install.
+
+=== No OpenShift Cluster
+
+Use `bookbag` AgnosticD role is post-install to deploy bookbag to another OpenShift cluster.
+Provide SSH information so your users can connect to the lab infrastructure from the Bookbag terminal.
